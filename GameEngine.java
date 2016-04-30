@@ -55,6 +55,11 @@ public class GameEngine implements KeyListener, GameReporter {
 		while(e_iter.hasNext()){
 			Enemy e = e_iter.next();
 			e.proceed();
+			if(!e.isAlive()){
+				e_iter.remove();
+				gp.sprites.remove(e);
+				score += 100;
+			}
 		}
 
 		gp.updateGameUI(this);
